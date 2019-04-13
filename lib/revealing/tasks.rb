@@ -24,6 +24,8 @@ RESIZED_ASSETS = RESIZABLE_ASSETS.pathmap("#{TARGET_DIR}/%f")
 ASSET_SOURCES = FileList['assets/*'] - RESIZABLE_ASSETS
 ASSETS = ASSET_SOURCES.pathmap("#{TARGET_DIR}/%f") - RESIZED_ASSETS
 
+HEADERS = FileList["headers/*"] # These are included literal; no need to copy them
+
 load "#{__dir__}/tasks/assets.rake"
 load "#{__dir__}/tasks/reveal.js.rake"
 load "#{__dir__}/tasks/gpp.rake"
@@ -31,7 +33,7 @@ load "#{__dir__}/tasks/gpp.rake"
 git_dirty_file DIRTY_FILE
 
 desc "Build #{TARGET_FILE}"
-file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILES, DIRTY_FILE ] + ASSETS + RESIZED_ASSETS do
+file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILES, DIRTY_FILE ] + ASSETS + RESIZED_ASSETS + HEADERS do
   sh %(pandoc
       --to=revealjs
       --standalone
@@ -42,7 +44,7 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILES, DIRTY_FILE ] 
       --variable slideNumber=true
       --variable history=true
       --variable revealjs-url=#{REVEAL_JS}
-      --include-in-header=#{TARGET_DIR}/customizations.css
+      #{HEADERS.map { |h| "--include-in-header=#{h}" }.join("\n")}
     #{GPP_FILES}
   ).split("\n").join(' ')
 end

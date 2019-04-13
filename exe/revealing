@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-warn <<EOM
-TBD:
-* git init (at . or at given dir)
-* create src/index.markdown
-* create Gemfile
-* create Rakefile
-* say that 'rake --tasks' is the next thing to do
-EOM
+require 'revealing/cli'
+
+Revealing::CLI.start(ARGV)

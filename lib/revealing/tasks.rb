@@ -16,9 +16,8 @@ GPP_FILES = FileList["#{GPP_DIR}/index.markdown"]
 CLEAN.include GPP_DIR, DIRTY_FILE
 CLOBBER.include TARGET_DIR
 
-REVEAL_JS = "reveal.js".freeze
+REVEAL_JS = 'reveal.js'.freeze
 REVEAL_JS_TARGET_DIR = TARGET_DIR / REVEAL_JS
-REVEAL_JS_VERSION = '3.7.0'.freeze
 
 RESIZABLE_ASSETS = (FileList["assets/*.png"] + FileList["assets/*.jpg"])
 RESIZED_ASSETS = RESIZABLE_ASSETS.pathmap("#{TARGET_DIR}/%f")

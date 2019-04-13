@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+# probably obsolete
+
+require 'rake'
+require 'bundler'
+raise "Bundler is required.  Please install bundler with 'gem install bundler'" unless defined?(Bundler)
+
+Bundler.setup
+app = Rake.application
+
+app.init
+# Pathname(__dir__).parent.glob('{lib/**/*.rake}').each { |t| load t }
+require 'revealing/tasks'
+
+tasks = app.tasks
+if ARGV.empty?
+  warn "Missing task. Expect one of #{tasks.join(", ")}"
+  exit 1
+end
+
+task = ARGV[0]
+
+if ! tasks.include?(task)
+  warn "No such task: #{task}"
+  exit 1
+end
+
+app.invoke_task(task)

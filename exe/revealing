@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+warn <<EOM
+TBD:
+* git init (at . or at given dir)
+* create src/index.markdown
+* create Gemfile
+* create Rakefile
+* say that 'rake --tasks' is the next thing to do
+EOM

@@ -47,5 +47,3 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILES, DIRTY_FILE ] 
     #{GPP_FILES}
   ).split("\n").join(' ')
 end
-
-task default: TARGET_FILE

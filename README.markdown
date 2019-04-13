@@ -12,13 +12,21 @@ Additional features:
 
 * [Zero to CF in Kube-Cluster in 30 Seconds with Concourse, Helm, Fissile and Eirini](http://zero2cfin30s.eirini.cf/) (source: [suhlig/zero-to-cf-in-30-seconds](https://github.com/suhlig/zero-to-cf-in-30-seconds))
 
+# Development
+
+* Create a test project using `revealing init`
+* Update `revealing` locally with this one-liner:
+  ```console
+  $ (cd ../revealing; git add .; bake install) && bundle update && bake -T
+  ```
+* Test changes in the test project
+
 # TODO
 
-1. Can the default task still be overridden in projects?
+1. `revealing init` creates a new project with the right structure, already `git init`-ed
 1. Bail if any of the prereq tools are not there
 1. Keep assets in their source folders
 1. What happens if `customizations.css` is not there?
-1. `revealing init` creates a new project with the right structure, already `git init`-ed
 1. Target folders mirror source, so that we don't risk duplicates
 1. Expose customization of
    * highlight-style

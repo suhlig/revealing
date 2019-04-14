@@ -1,7 +1,8 @@
 REVEAL_JS_VERSION = '3.7.0'.freeze
+prereq 'curl'
 
 desc 'reveal.js is present'
-directory REVEAL_JS_TARGET_DIR => TARGET_DIR do |target|
+directory REVEAL_JS_TARGET_DIR => ['curl', TARGET_DIR] do |target|
   mkdir target.name
 
   if ENV['REVEAL_JS_DIR'].to_s.empty?

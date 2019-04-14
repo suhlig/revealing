@@ -26,14 +26,16 @@ ASSET_SOURCES = FileList[SOURCE_DIR / "*"] - RESIZABLE_ASSETS - SOURCE_FILES
 ASSETS = ASSET_SOURCES.pathmap("#{TARGET_DIR}/%f") - RESIZED_ASSETS
 HEADERS = FileList["headers/*"] # These are included literal; no need to copy them
 
+load "#{__dir__}/tasks/prereq.rake"
 load "#{__dir__}/tasks/gpp.rake"
 load "#{__dir__}/tasks/assets.rake"
 load "#{__dir__}/tasks/reveal.js.rake"
 
 git_dirty_file DIRTY_FILE
+prereq 'pandoc'
 
 desc "Build #{TARGET_FILE}"
-file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE ] + ASSETS + RESIZED_ASSETS + HEADERS do
+file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE, 'pandoc'] + ASSETS + RESIZED_ASSETS + HEADERS do
   sh %(pandoc
       --to=revealjs
       --standalone

@@ -9,15 +9,27 @@ This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to creat
 # Development
 
 * Create a test project using `revealing init`
-* Update `revealing` locally with this one-liner:
+* Test by referring to the changed tasks:
   ```console
-  $ (cd ../revealing; git add .; bake install) && bundle update && bake -T
+  rake -f ~/workspace/revealing/lib/revealing/tasks.rb -T
   ```
-* Test changes in the test project
+
+# Releasing
+
+* Make the changes
+* Run tests
+* From a test project, install the updated gem locally and invoke it:
+  ```console
+  $ (cd ../revealing; git add .; bake install) && bundle update && bake clobber default
+  ```
+  Verify that everything works.
+* Bump the version in `lib/revealing/version.rb`
+* git commit
+* `gem signin` to rubygems.org
+* `bundle exec rake release`
 
 # TODO
 
-1. Bail if any of the prereq tools are not there
 1. `revealing doctor` to analyze tools
 1. Target folders mirror source, so that we don't risk duplicates
 1. Read desired versions of dependencies from a YAML file (with sensible defaults coming from this project)

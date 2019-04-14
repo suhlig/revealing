@@ -30,6 +30,7 @@ This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to creat
 
 # TODO
 
+1. Allow initializing the current directory
 1. `revealing doctor` to analyze tools
 1. Target folders mirror source, so that we don't risk duplicates
 1. Read desired versions of dependencies from a YAML file (with sensible defaults coming from this project)

@@ -4,25 +4,48 @@ require 'aruba/rspec'
 
 describe 'init', type: 'aruba' do
   let(:revealing_init) { "#{aruba.root_directory}/exe/revealing init" }
+  let(:cwd) { Pathname(aruba.config.working_directory) }
+  let(:project_directory) { cwd / 'shiny-new-presentation' }
+  let(:project_files) { %w[src/index.markdown Rakefile Gemfile README.markdown].map { |e| project_directory / e } }
+
+  shared_examples 'a new project directory' do
+    it 'creates the required files in the new project directory' do
+      run_command "#{revealing_init} #{project_directory.basename}"
+      expect(last_command_started).to be_successfully_executed
+      expect(project_files).to all(exist)
+    end
+  end
 
   context 'with a new project directory' do
-    let(:project_directory) { 'shiny-new-presentation' }
-    let(:cwd) { Pathname(aruba.config.working_directory) }
-
-    before do
-      run_command "#{revealing_init} #{project_directory}"
-      expect(last_command_started).to be_successfully_executed
-    end
-
     it 'creates the new project directory' do
-      expect(cwd / project_directory).to be_directory
+      run_command "#{revealing_init} #{project_directory.basename}"
+      expect(last_command_started).to be_successfully_executed
+      expect(project_directory).to be_directory
     end
 
-    it 'creates the required files in the new project directory' do
-      expect(cwd / project_directory / 'src/index.markdown').to exist
-      expect(cwd / project_directory / 'Rakefile').to exist
-      expect(cwd / project_directory / 'Gemfile').to exist
-      expect(cwd / project_directory / 'README.markdown').to exist
+    it_behaves_like('a new project directory')
+  end
+
+  context 'with an existing (empty) project directory' do
+    before do
+      project_directory.mkdir
+      expect(project_directory).to be_directory
+    end
+
+    it_behaves_like('a new project directory')
+
+    context 'the README already exists' do
+      let(:readme) { (project_directory / 'README.markdown') }
+
+      before do
+        readme.write('fooo')
+      end
+
+      it 'does not override an existing file' do
+        run_command "#{revealing_init} #{project_directory.basename}"
+        expect(last_command_started).to be_successfully_executed
+        expect(readme.read).to eq('fooo')
+      end
     end
   end
 end

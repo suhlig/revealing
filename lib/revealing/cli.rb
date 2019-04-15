@@ -3,8 +3,12 @@ require 'pathname'
 
 module Revealing
   class CLI < Thor
-    desc 'init DIRECTORY', "initialize a new revealing project in DIRECTORY."
-    def init(directory)
+    def self.exit_on_failure?
+      true
+    end
+
+    desc 'init [DIRECTORY]', 'initialize a new revealing project in DIRECTORY. Defaults to the current working directory.'
+    def init(directory = '.')
       project_directory = Pathname(directory)
       project_directory.mkdir unless project_directory.exist?
 

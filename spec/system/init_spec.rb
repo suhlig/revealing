@@ -48,4 +48,14 @@ describe 'init', type: 'aruba' do
       end
     end
   end
+
+  context 'with the current working directory as project directory' do
+    let(:project_directory) { cwd }
+
+    it 'creates the required files in the current working directory' do
+      run_command "#{revealing_init}"
+      expect(last_command_started).to be_successfully_executed
+      expect(project_files).to all(exist)
+    end
+  end
 end

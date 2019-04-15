@@ -5,7 +5,6 @@ This is the source of New Presentation. It was generated with [`revealing`](http
 # Features
 
 * Images are resized for the web using [`graphicsmagick`](http://www.graphicsmagick.org/)
-* Embedded [`ditaa`](http://ditaa.sourceforge.net/) snippets are rendered to images
 * `#include` and other [`gpp`](https://logological.org/gpp) features allow organizing the sources of complex presentations
 * Files in the `headers` folder are included verbatim in the HTML `<head>` section
 

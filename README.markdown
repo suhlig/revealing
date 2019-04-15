@@ -35,6 +35,7 @@ This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to creat
 1. `revealing doctor` to analyze tools
 1. Target folders mirror source, so that we don't risk duplicates
 1. Read desired versions of dependencies from a YAML file (with sensible defaults coming from this project)
+1. Re-add ditaa processing
 1. Add mathjax (copy to target if present, otherwise use CDN)
 1. Expose customization of
    * highlight-style

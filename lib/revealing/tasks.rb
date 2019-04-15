@@ -3,7 +3,7 @@ require 'pathname'
 require 'git-dirty'
 
 SOURCE_DIR = Pathname('src')
-SOURCE_FILES = FileList["#{SOURCE_DIR}/**/*.markdown"]
+SOURCE_FILES = FileList[SOURCE_DIR / '**/*.markdown']
 
 TARGET_DIR = Pathname('public_html')
 directory TARGET_DIR
@@ -12,7 +12,7 @@ TARGET_FILE = TARGET_DIR / 'index.html'
 GPP_DIR = Pathname('gpp')
 directory GPP_DIR
 DIRTY_FILE = GPP_DIR / '.dirty'
-GPP_FILE = FileList["#{GPP_DIR}/index.markdown"]
+GPP_FILE = FileList[GPP_DIR / 'index.markdown']
 
 CLEAN.include GPP_DIR, DIRTY_FILE
 CLOBBER.include TARGET_DIR
@@ -20,11 +20,11 @@ CLOBBER.include TARGET_DIR
 REVEAL_JS = 'reveal.js'.freeze
 REVEAL_JS_TARGET_DIR = TARGET_DIR / REVEAL_JS
 
-RESIZABLE_ASSETS = (FileList[SOURCE_DIR / "**/*.png"] + FileList[SOURCE_DIR / "**/*.jpg"])
+RESIZABLE_ASSETS = (FileList[SOURCE_DIR / '**/*.png'] + FileList[SOURCE_DIR / '**/*.jpg'])
 RESIZED_ASSETS = RESIZABLE_ASSETS.pathmap("#{TARGET_DIR}/%f")
-ASSET_SOURCES = FileList[SOURCE_DIR / "*"] - RESIZABLE_ASSETS - SOURCE_FILES
+ASSET_SOURCES = FileList[SOURCE_DIR / '*'] - RESIZABLE_ASSETS - SOURCE_FILES
 ASSETS = ASSET_SOURCES.pathmap("#{TARGET_DIR}/%f") - RESIZED_ASSETS
-HEADERS = FileList["headers/*"] # These are included literal; no need to copy them
+HEADERS = FileList['headers/*'] # These are included literal; no need to copy them
 
 load "#{__dir__}/tasks/prereq.rake"
 load "#{__dir__}/tasks/gpp.rake"

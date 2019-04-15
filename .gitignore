@@ -1,3 +1,5 @@
+.DS_Store
+.envrc
 Gemfile.lock
 pkg
 tmp

@@ -22,8 +22,9 @@ REVEAL_JS_TARGET_DIR = TARGET_DIR / REVEAL_JS
 
 RESIZABLE_ASSETS = (FileList[SOURCE_DIR / '**/*.png'] + FileList[SOURCE_DIR / '**/*.jpg'])
 RESIZED_ASSETS = RESIZABLE_ASSETS.pathmap("#{TARGET_DIR}/%f")
-ASSET_SOURCES = FileList[SOURCE_DIR / '*'] - RESIZABLE_ASSETS - SOURCE_FILES
+ASSET_SOURCES = FileList[SOURCE_DIR / '**/*'].select{ |f| Pathname(f).file? } - RESIZABLE_ASSETS - SOURCE_FILES
 ASSETS = ASSET_SOURCES.pathmap("#{TARGET_DIR}/%f") - RESIZED_ASSETS
+
 HEADERS = FileList['headers/*'] # These are included literal; no need to copy them
 
 load "#{__dir__}/tasks/prereq.rake"

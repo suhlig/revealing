@@ -9,11 +9,11 @@ describe 'subfolders', type: 'aruba' do
 
   before do
     run_command "#{aruba.root_directory}/exe/revealing init"
-    expect(last_command_started).to be_successfully_executed
+    expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
 
     FileUtils.cp_r(fixture('subfolders').glob('*'), project_directory / 'src')
     run_command 'bundle exec rake'
-    expect(last_command_started).to be_successfully_executed
+    expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
   end
 
   it 'includes content from the `cat` subfolder' do

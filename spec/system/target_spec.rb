@@ -9,12 +9,12 @@ describe 'calling rake', type: 'aruba' do
 
   before do
     run_command "#{aruba.root_directory}/exe/revealing init"
-    expect(last_command_started).to be_successfully_executed
+    expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
   end
 
   it 'creates the target file' do
     run_command 'bundle exec rake'
-    expect(last_command_started).to be_successfully_executed
+    expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
     expect(target_file).to be_file
   end
 
@@ -28,7 +28,7 @@ describe 'calling rake', type: 'aruba' do
 
     it 'updates the target file' do
       run_command 'bundle exec rake'
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       expect(target_file.read).to include('appended slide')
     end
   end
@@ -36,7 +36,7 @@ describe 'calling rake', type: 'aruba' do
   context 'running it twice' do
     before do
       run_command 'bundle exec rake'
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       expect(last_command_started.stderr).to_not be_empty
     end
 

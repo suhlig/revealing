@@ -8,7 +8,6 @@ cache:
 before_install:
     - gem update --system
     - gem install bundler
-#    - sudo apt-get install -y pandoc
 addons:
   apt:
     update: true

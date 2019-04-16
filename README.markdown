@@ -35,7 +35,7 @@ This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to creat
 1. `revealing doctor` to analyze tools
 1. Rubocop
 1. Read desired dependencies (URLs or version numbers) from ENV vars or a YAML file (with sensible defaults coming from this project)
-1. Re-add ditaa processing
+1. Re-add ditaa processing, or replace with [mermaid-filter](https://github.com/raghur/mermaid-filter)
 1. Add mathjax (copy to target if present, otherwise use CDN)
 1. Add guard-livereload to the generated project
 1. Expose customization of

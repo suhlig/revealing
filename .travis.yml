@@ -13,3 +13,5 @@ addons:
     update: true
     packages:
       - pandoc
+      - gpp
+      - graphicsmagick

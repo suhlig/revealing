@@ -4,9 +4,14 @@
 
 This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to create [`reveal.js`](https://revealjs.com) presentations from markdown files. It uses [`pandoc`](https://pandoc.org/) to create the final presentation. The output is a self-contained set of static HTML files that can be viewed locally uploaded to a web server.
 
+Unique features:
+
+1. `revealing` assumes that your presentation is built using `Rake`. Additional, custom steps (like deployment) can easily be added to the Rakefile that was generated for you.
+1. Efficiency - by carefully modeling the dependencies between source files (your markdown), intermediate build products (processed include statements), and the final output (HTML and resized images), build steps are only run when necessary (e.g. when a corresponding source file was changed).
+
 # Examples
 
-* [Zero to CF in Kube-Cluster in 30 Seconds with Concourse, Helm, Fissile and Eirini](http://zero2cfin30s.eirini.cf/) (source: [suhlig/zero-to-cf-in-30-seconds](https://github.com/suhlig/zero-to-cf-in-30-seconds))
+* [Zero to CF in Kube-Cluster in 30 Seconds with Concourse, Helm, Fissile and Eirini](http://zero2cfin30s.eirini.cf/) (source: [suhlig/zero-to-cf-in-30-seconds](https://github.com/suhlig/zero-to-cf-in-30-seconds)) is built using `revealing` and published on IBM Cloud using a GitHub action after each `git push`.
 
 # Development
 
@@ -37,6 +42,7 @@ This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to creat
 1. Read desired dependencies (URLs or version numbers) from ENV vars or a YAML file (with sensible defaults coming from this project)
 1. Re-add ditaa processing, or replace with [mermaid-filter](https://github.com/raghur/mermaid-filter)
 1. Add mathjax (copy to target if present, otherwise use CDN)
+1. Charts using [vega-lite](https://vega.github.io/vega-lite/usage/embed.html)
 1. Add guard-livereload to the generated project
 1. Expose customization of
    * highlight-style

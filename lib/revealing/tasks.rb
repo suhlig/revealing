@@ -33,7 +33,7 @@ load "#{__dir__}/tasks/reveal.js.rake"
 
 git_dirty_file DIRTY_FILE
 
-MATH_JAX_VERSION = '2.7.5'
+MATH_JAX_VERSION = ENV.fetch('MATH_JAX_VERSION', '2.7.5')
 
 desc "Build #{TARGET_FILE}"
 file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE] + ASSETS + RESIZED_ASSETS + HEADERS do

@@ -30,8 +30,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'thor'
 
   spec.add_development_dependency 'aruba'
+  spec.add_development_dependency 'guard'
+  spec.add_development_dependency 'guard-bundler'
+  spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rspec'
+
 end
 # rubocop:enable Metrics/BlockLength

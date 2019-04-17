@@ -37,12 +37,12 @@ Unique features:
 
 # TODO
 
-1. Add mathjax (copy to target if present, otherwise use CDN)
 1. Read desired dependencies (URLs or version numbers) from ENV vars or a YAML file (with sensible defaults coming from this project)
 1. Re-add ditaa processing, or replace with [mermaid-filter](https://github.com/raghur/mermaid-filter)
 
 Milestone: 1.1
 
+1. Allow self-hosted mathjax (copy to target)
 1. Charts using [vega-lite](https://vega.github.io/vega-lite/usage/embed.html)
 1. Add guard-livereload to the generated project
 1. Expose customization of
@@ -51,6 +51,7 @@ Milestone: 1.1
    * theme
    * slideNumber
    * history
+   * metadata (e.g. `lang=de_DE`)
 1. Provide a docker image so that we can run without installing everything
 1. PDF output
 1. Make the initial set of files more meaningful (e.g. add the project name, `git config user.name` etc.)

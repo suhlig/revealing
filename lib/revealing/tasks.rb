@@ -33,6 +33,8 @@ load "#{__dir__}/tasks/reveal.js.rake"
 
 git_dirty_file DIRTY_FILE
 
+MATH_JAX_VERSION = '2.7.5'
+
 desc "Build #{TARGET_FILE}"
 file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE] + ASSETS + RESIZED_ASSETS + HEADERS do
   sh %(pandoc
@@ -45,6 +47,8 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE] + 
       --variable slideNumber=true
       --variable history=true
       --variable revealjs-url=#{REVEAL_JS}
+      --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/#{MATH_JAX_VERSION}/MathJax.js?config=TeX-AMS_CHTML-full
+      --include-in-header=#{__dir__ + '/../../templates/mathjax/config.js'}
       #{HEADERS.map { |h| "--include-in-header=#{h}" }.join("\n")}
     #{GPP_FILE}
   ).split("\n").join(' ')

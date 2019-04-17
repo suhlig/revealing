@@ -6,7 +6,7 @@ describe 'init', type: 'aruba' do
   let(:revealing_init) { "#{aruba.root_directory}/exe/revealing init" }
   let(:cwd) { Pathname(aruba.config.working_directory) }
   let(:project_directory) { cwd / 'shiny-new-presentation' }
-  let(:project_files) { %w[src/index.markdown Rakefile Gemfile README.markdown].map { |e| project_directory / e } }
+  let(:project_files) { %w[src/index.markdown Rakefile Gemfile README.markdown metadata.yml].map { |e| project_directory / e } }
 
   shared_examples 'a new project directory' do
     it 'creates the required files in the new project directory' do

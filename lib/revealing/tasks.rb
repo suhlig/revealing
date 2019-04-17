@@ -35,8 +35,11 @@ git_dirty_file DIRTY_FILE
 
 MATH_JAX_VERSION = ENV.fetch('MATH_JAX_VERSION', '2.7.5')
 
+METADATA_FILE = Pathname('metadata.yml')
+file METADATA_FILE
+
 desc "Build #{TARGET_FILE}"
-file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE] + ASSETS + RESIZED_ASSETS + HEADERS do
+file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE, METADATA_FILE] + ASSETS + RESIZED_ASSETS + HEADERS do
   sh %(pandoc
       --to=revealjs
       --standalone
@@ -49,6 +52,7 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE] + 
       --variable revealjs-url=#{REVEAL_JS}
       --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/#{MATH_JAX_VERSION}/MathJax.js?config=TeX-AMS_CHTML-full
       --include-in-header=#{__dir__ + '/../../templates/mathjax/config.js'}
+      "--metadata-file=#{METADATA_FILE.to_path}"
       #{HEADERS.map { |h| "--include-in-header=#{h}" }.join("\n")}
     #{GPP_FILE}
   ).split("\n").join(' ')

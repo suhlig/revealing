@@ -37,10 +37,7 @@ Unique features:
 
 # TODO
 
-1. Expose customization of metadata (e.g. `lang=de_DE`)
-
-Milestone: 1.1
-
+1. BUG: Need to rebuild if a file in the headers folder changed
 1. Expose customization of
    * highlight-style
    * theme

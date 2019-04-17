@@ -36,6 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rspec'
-
+  spec.add_development_dependency 'rubocop'
 end
 # rubocop:enable Metrics/BlockLength

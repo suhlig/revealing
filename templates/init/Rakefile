@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'revealing/tasks'
 
 task default: TARGET_FILE

@@ -15,6 +15,7 @@ Do this once:
 1. Get Ruby if not already present
 1. `gem install bundler`
 1. `bundle install`
+1. Check that you have the required tools as reported by `revealing doctor`
 
 # Generate the Presentation
 

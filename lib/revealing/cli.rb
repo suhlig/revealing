@@ -1,10 +1,29 @@
 require 'thor'
 require 'pathname'
+require_relative 'prerequisite'
 
 module Revealing
+  PREREQUISITES = [
+    Prerequisite.new('curl'),
+    Prerequisite.new('gm', 'graphicsmagick'),
+    Prerequisite.new('gpp'),
+    Prerequisite.new('pandoc'),
+  ]
+
   class CLI < Thor
     def self.exit_on_failure?
       true
+    end
+
+    desc 'doctor', 'Checks whether your system is fit for revealing.'
+    def doctor
+      PREREQUISITES.each do |tool|
+        if tool.available?
+          puts "OK: #{tool} is available."
+        else
+          warn "Error: #{tool.command} is not available. Install it using `#{tool.install_hint}`."
+        end
+      end
     end
 
     desc 'init [DIRECTORY]', 'initialize a new revealing project in DIRECTORY. Defaults to the current working directory.'

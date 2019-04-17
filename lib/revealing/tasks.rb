@@ -41,7 +41,7 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE] + 
       --to=revealjs
       --standalone
       --highlight-style zenburn
-      --slide-level=1
+      --slide-level=#{ENV.fetch('REVEAL_JS_SLIDE_LEVEL', '1')}
       --output #{TARGET_FILE}
       --variable theme=white
       --variable slideNumber=true

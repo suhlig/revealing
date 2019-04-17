@@ -9,6 +9,7 @@ This is the source of New Presentation. It was generated with [`revealing`](http
 * Files in the `headers` folder are included verbatim in the HTML `<head>` section
 * MathJax is included and configured to render SVG. To use a specific version, set the environment variable `MATH_JAX_VERSION` to one of of the versions provided by [CDNJS](https://cdnjs.com/libraries/mathjax).
 * reveal.js is downloaded and unzipped at build time. Set the environment variable `REVEAL_JS_VERSION` to customize which version to use (must be one of the [released versions](https://github.com/hakimel/reveal.js/releases)). If `REVEAL_JS_DIR` is set, the files from this directory are used.
+* The environment variable `REVEAL_JS_SLIDE_LEVEL` can be set to [structure the slide show](https://pandoc.org/MANUAL.html#structuring-the-slide-show)
 
 # Setup
 

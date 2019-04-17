@@ -37,9 +37,7 @@ Unique features:
 
 # TODO
 
-1. Expose customization of
-   * slide-level
-   * metadata (e.g. `lang=de_DE`)
+1. Expose customization of metadata (e.g. `lang=de_DE`)
 
 Milestone: 1.1
 

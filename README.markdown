@@ -37,9 +37,8 @@ Unique features:
 
 # TODO
 
-1. BUG: Need to rebuild if a file in the headers folder changed
-1. Catch errors when running rake and suggest to run `doctor` first
 1. `doctor` checks that all the template files are present
+1. Treat mathjax config as yet another header file
 1. Expose customization of
    * highlight-style
    * theme

@@ -27,7 +27,7 @@ describe 'metadata', type: 'aruba' do
 
   context 'adding to the metadata file' do
     before do
-      expect(target_file.read).not_to include('revealing')
+      expect(target_file.read).not_to include('jabberwocky')
       (project_directory / 'metadata.yml').open('a') { |f| f.write('- jabberwocky') }
     end
 

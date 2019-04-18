@@ -57,3 +57,7 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE, ME
     #{GPP_FILE}
   ).split("\n").join(' ')
 end
+
+at_exit do
+  warn "\nRun `revealing doctor` to assist in fixing these errors.\n" if $! && ! $!.success?
+end

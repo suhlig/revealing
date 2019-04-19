@@ -5,7 +5,7 @@ require 'git-dirty'
 SOURCE_DIR = Pathname('src')
 SOURCE_FILES = FileList[SOURCE_DIR / '**/*.markdown']
 
-TARGET_DIR = Pathname('public_html')
+TARGET_DIR = Pathname(ENV.fetch('TARGET_DIR', 'public_html'))
 directory TARGET_DIR
 TARGET_FILE = TARGET_DIR / 'index.html'
 

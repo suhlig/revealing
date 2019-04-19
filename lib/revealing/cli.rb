@@ -60,6 +60,12 @@ module Revealing
       end
     end
 
+    desc 'version', 'Prints version information'
+    def version
+      puts "revealing #{Revealing::VERSION}"
+    end
+    map %w(-V --version) => :version
+
     private
 
     TEMPLATES_DIR = Pathname(__dir__) / '../../templates'

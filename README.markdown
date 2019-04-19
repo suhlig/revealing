@@ -37,7 +37,6 @@ Unique features:
 
 # TODO
 
-1. `revealing --version`
 1. Expose customization of
    * highlight-style
    * theme

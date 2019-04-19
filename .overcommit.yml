@@ -1,0 +1,33 @@
+# Extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+
+PreCommit:
+  BundleCheck:
+    enabled: true
+  LocalPathsInGemfile:
+    enabled: true
+  RakeTarget:
+    enabled: true
+    targets:
+      - rubocop
+      - spec:unit
+  TrailingWhitespace:
+    enabled: true
+
+PostCheckout:
+  BundleInstall:
+    enabled: true
+
+PostMerge:
+  BundleInstall:
+    enabled: true
+
+PostRewrite:
+  BundleInstall:
+    enabled: true
+
+PrePush:
+  RakeTarget:
+    enabled: true
+    targets:
+      - default

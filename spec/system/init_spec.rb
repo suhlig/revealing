@@ -6,12 +6,12 @@ describe 'init', type: 'aruba' do
   let(:revealing_init) { "#{aruba.root_directory}/exe/revealing init" }
   let(:cwd) { Pathname(aruba.config.working_directory) }
   let(:project_directory) { cwd / 'shiny-new-presentation' }
-  let(:project_files) { %w[src/index.markdown Rakefile Gemfile README.markdown metadata.yml].map { |e| project_directory / e } }
+  let(:project_files) { %w[src/index.markdown headers/mathjax.js Rakefile Gemfile README.markdown metadata.yml].map { |e| project_directory / e } }
 
   shared_examples 'a new project directory' do
     it 'creates the required files in the new project directory' do
       run_command "#{revealing_init} #{project_directory.basename}"
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       expect(project_files).to all(exist)
     end
   end
@@ -19,7 +19,7 @@ describe 'init', type: 'aruba' do
   context 'with a new project directory' do
     it 'creates the new project directory' do
       run_command "#{revealing_init} #{project_directory.basename}"
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       expect(project_directory).to be_directory
     end
 
@@ -43,7 +43,7 @@ describe 'init', type: 'aruba' do
 
       it 'does not override an existing file' do
         run_command "#{revealing_init} #{project_directory.basename}"
-        expect(last_command_started).to be_successfully_executed
+        expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
         expect(readme.read).to eq('fooo')
       end
     end
@@ -54,7 +54,7 @@ describe 'init', type: 'aruba' do
 
     it 'creates the required files in the current working directory' do
       run_command "#{revealing_init}"
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       expect(project_files).to all(exist)
     end
   end

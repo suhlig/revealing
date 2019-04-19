@@ -11,7 +11,6 @@ describe 'headers', type: 'aruba' do
     run_command "#{aruba.root_directory}/exe/revealing init"
     expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
 
-    headers.mkdir
     FileUtils.cp(fixture('headers/index.markdown'), project_directory / 'src')
     FileUtils.cp(fixture('headers/styles.css'), headers )
     run_command 'bundle exec rake'

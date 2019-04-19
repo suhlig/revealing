@@ -28,7 +28,7 @@ module Revealing
         end
       end
 
-      missing_files = target_mapping(TEMPLATES_DIR, Pathname.getwd).values.reject(&:exist?)
+      missing_files = target_files_in(Pathname.getwd).reject(&:exist?)
 
       if missing_files.any?
         anything_missing = true
@@ -49,7 +49,7 @@ module Revealing
 
       # FileUtils.cp_r overwrites the target if it exists, but we want to preserve it
       # and print information about what happened
-      target_mapping(TEMPLATES_DIR, project_directory).each do |src, target|
+      template_files.zip(target_files_in(project_directory)).each do |src, target|
         if target.exist?
           warn "#{target} exists; skipping"
         else
@@ -62,14 +62,14 @@ module Revealing
 
     private
 
-    TEMPLATES_DIR = Pathname(__dir__) / '../../templates/init'
+    TEMPLATES_DIR = Pathname(__dir__) / '../../templates'
 
-    def target_mapping(src_dir, target_dir)
-      src_dir
-        .glob('**/*')
-        .select(&:file?)
-        .map{|f| [f, target_dir / f.relative_path_from(src_dir)]}
-        .to_h
+    def template_files
+      TEMPLATES_DIR.glob('**/*').select(&:file?)
+    end
+
+    def target_files_in(dir)
+      template_files.map{|f| dir / f.relative_path_from(TEMPLATES_DIR)}
     end
   end
 end

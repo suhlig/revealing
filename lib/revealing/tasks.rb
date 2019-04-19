@@ -51,7 +51,6 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE, ME
       --variable history=true
       --variable revealjs-url=#{REVEAL_JS}
       --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/#{MATH_JAX_VERSION}/MathJax.js?config=TeX-AMS_CHTML-full
-      --include-in-header=#{__dir__ + '/../../templates/mathjax/config.js'}
       "--metadata-file=#{METADATA_FILE.to_path}"
       #{HEADERS.map { |h| "--include-in-header=#{h}" }.join("\n")}
     #{GPP_FILE}

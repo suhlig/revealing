@@ -8,26 +8,26 @@ describe 'duplicate assets', type: 'aruba' do
   context 'generic assets' do
     before do
       run_command "#{aruba.root_directory}/exe/revealing init"
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       FileUtils.cp_r(fixture('duplicate-generic-assets').glob('*'), project_directory / 'src')
     end
 
     it 'refuses to override duplicates' do
       run_command 'bundle exec rake'
-      expect(last_command_started).to_not be_successfully_executed
+      expect(last_command_started).to_not be_successfully_executed, lambda { last_command_started.output }
     end
   end
 
   context 'resizable assets' do
     before do
       run_command "#{aruba.root_directory}/exe/revealing init"
-      expect(last_command_started).to be_successfully_executed
+      expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
       FileUtils.cp_r(fixture('duplicate-resizable-assets').glob('*'), project_directory / 'src')
     end
 
     it 'refuses to override duplicates' do
       run_command 'bundle exec rake'
-      expect(last_command_started).to_not be_successfully_executed
+      expect(last_command_started).to_not be_successfully_executed, lambda { last_command_started.output }
     end
   end
 end

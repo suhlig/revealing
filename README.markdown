@@ -37,6 +37,10 @@ Unique features:
 
 # TODO
 
+1. Expose DITAA's `--scale` via attribute
+1. PR homebrew's [ditaa](https://github.com/Homebrew/homebrew-core/blob/master/Formula/ditaa.rb) to use `-Djava.awt.headless=true`
+1. pandoc-ditaa-inline filter should write files to cache dir and read it from there via SHA
+   - still keep the SVG inline, but do not call ditaa again if unchanged
 1. Expose customization of
    * highlight-style
    * theme

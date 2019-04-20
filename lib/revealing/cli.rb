@@ -5,6 +5,7 @@ require_relative 'prerequisite'
 module Revealing
   PREREQUISITES = [
     Prerequisite.new('curl'),
+    Prerequisite.new('ditaa'),
     Prerequisite.new('gm', 'graphicsmagick'),
     Prerequisite.new('gpp'),
     Prerequisite.new('pandoc'),

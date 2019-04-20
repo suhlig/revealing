@@ -53,6 +53,7 @@ file TARGET_FILE => [ TARGET_DIR, REVEAL_JS_TARGET_DIR, GPP_FILE, DIRTY_FILE, ME
       --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/#{MATH_JAX_VERSION}/MathJax.js?config=TeX-AMS_CHTML-full
       "--metadata-file=#{METADATA_FILE.to_path}"
       #{HEADERS.map { |h| "--include-in-header=#{h}" }.join("\n")}
+      --lua-filter #{__dir__}/../../tools/pandoc-ditaa-inline/ditaa-inline.lua
     #{GPP_FILE}
   ).split("\n").join(' ')
 end

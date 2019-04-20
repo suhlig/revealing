@@ -6,7 +6,6 @@ Turns inline DITAA diagrams into SVG. Needs a local installation of ditaa, e.g. 
 
 Given this markdown document (note the DITAA block) saved as `example.markdown`
 
-
 ```markdown
 The following graph shows two boxes, connected:
 

@@ -12,7 +12,6 @@ The following graph shows two boxes, connected:
  ```
 
 As you can see, ditaa renders that quite pretty. It's turned into an embedded SVG.
-
 ```
 
 The following command turns the DITAA block into SVG, embedded in the HTML:

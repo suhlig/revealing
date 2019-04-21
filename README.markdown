@@ -40,6 +40,7 @@ Unique features:
 1. Expose DITAA's `--scale` via attribute
 1. pandoc-ditaa-inline filter could write files to cache dir and read it from there via SHA
    - still keep the SVG inline, but do not call ditaa again if unchanged
+1. Make pandoc-ditaa-inline only inline SVG if FORMAT is html (html5?)
 1. Expose customization of
    * highlight-style
    * theme

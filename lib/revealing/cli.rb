@@ -72,7 +72,7 @@ module Revealing
     TEMPLATES_DIR = Pathname(__dir__) / '../../templates'
 
     def template_files
-      TEMPLATES_DIR.glob('**/*').select(&:file?)
+      TEMPLATES_DIR.glob("**/*", File::FNM_DOTMATCH).select(&:file?)
     end
 
     def target_files_in(dir)

@@ -9,7 +9,7 @@ RuboCop::RakeTask.new
 
 namespace :spec do
   desc 'Run CI tests'
-  task ci: %i[rubocop unit system]
+  task ci: %i[rubocop unit]
 
   %w[unit system].each do |type|
     desc "Run #{type} tests"

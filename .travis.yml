@@ -1,17 +1,6 @@
 ---
 dist: xenial
 language: ruby
-# cache:
-#   - bundler
-#   directories:
-#     - /home/travis/.rvm/
 before_install:
   - gem update --system
   - gem install bundler
-addons:
-  apt:
-    update: true
-    packages:
-      - pandoc
-      - gpp
-      - graphicsmagick

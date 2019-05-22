@@ -25,14 +25,4 @@ describe 'subfolders', type: 'aruba' do
     expect(target_file.read).to include('Tom und Nicki Löschner')
     expect(project_directory / 'public_html/dog-1551709.jpg').to be_file
   end
-
-  it 'resizes images to not be wider than 1920px' do
-    expect(Image.new(project_directory / 'public_html/cat-1608581.jpg').width).to be <= 1920
-    expect(Image.new(project_directory / 'public_html/dog-1551709.jpg').width).to be <= 1920
-  end
-
-  it 'resizes images to not be taller than 1080px' do
-    expect(Image.new(project_directory / 'public_html/cat-1608581.jpg').height).to be <= 1080
-    expect(Image.new(project_directory / 'public_html/dog-1551709.jpg').height).to be <= 1080
-  end
 end

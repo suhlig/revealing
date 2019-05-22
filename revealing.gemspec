@@ -24,19 +24,21 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rake'
   spec.add_dependency 'bundler'
   spec.add_dependency 'git-dirty'
+  spec.add_dependency 'rake'
   spec.add_dependency 'thor'
 
   spec.add_development_dependency 'aruba'
   spec.add_development_dependency 'guard'
   spec.add_development_dependency 'guard-bundler'
   spec.add_development_dependency 'guard-rspec'
+  spec.add_development_dependency 'nokogiri'
   spec.add_development_dependency 'overcommit'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rspec-collection_matchers'
   spec.add_development_dependency 'rubocop'
 end
 # rubocop:enable Metrics/BlockLength

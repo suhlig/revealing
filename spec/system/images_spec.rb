@@ -16,6 +16,10 @@ describe 'images', type: 'aruba' do
     expect(last_command_started).to be_successfully_executed, lambda { last_command_started.output }
   end
 
+  it 'handles images with spaces in the file name' do
+    expect(project_directory / 'public_html/a mouse.jpg').to exist
+  end
+
   it 'resizes images to not be wider than 1920px' do
     expect(Image.new(project_directory / 'public_html/cat-1608581.jpg').width).to be <= 1920
     expect(Image.new(project_directory / 'public_html/dog-1551709.jpg').width).to be <= 1920

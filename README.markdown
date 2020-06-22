@@ -37,6 +37,7 @@ Unique features:
 
 # TODO
 
+1. Pandoc >= 2.9.3 is [required for reveal.js >= 4.0](https://github.com/jgm/pandoc/issues/6451#issuecomment-642470350)
 1. Expose customization of
    * highlight-style
    * theme

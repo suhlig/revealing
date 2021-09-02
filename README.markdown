@@ -1,6 +1,6 @@
 # `revealing` - A Workflow for reveal.js Presentations
 
-[![Build Status](https://travis-ci.org/suhlig/revealing.svg?branch=master)](https://travis-ci.org/suhlig/revealing)
+[![Build Status](https://app.travis-ci.com/suhlig/revealing.svg?branch=master)](https://app.travis-ci.com/suhlig/revealing)
 
 This gem provides a set of [`Rake`](https://github.com/ruby/rake) tasks to create [`reveal.js`](https://revealjs.com) presentations from markdown files. It uses [`pandoc`](https://pandoc.org/) to create the final presentation. The output is a self-contained set of static HTML files that can be viewed locally uploaded to a web server.
 

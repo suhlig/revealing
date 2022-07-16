@@ -8,6 +8,7 @@ def print_duplicates(list)
   warn 'Consider renaming them to be unique.'
 end
 
+# rubocop:disable Metrics/AbcSize
 def refute_duplicate_basename(assets)
   assets = assets.map { |f| Pathname(f) }
   basenames = assets.map(&:basename)
@@ -20,6 +21,7 @@ def refute_duplicate_basename(assets)
   print_duplicates(list)
   raise
 end
+# rubocop:enable Metrics/AbcSize
 
 refute_duplicate_basename(RESIZABLE_ASSETS)
 

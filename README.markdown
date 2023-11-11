@@ -11,7 +11,7 @@ Unique features:
 
 # Examples
 
-* [Zero to CF in Kube-Cluster in 30 Seconds with Concourse, Helm, Fissile and Eirini](http://zero2cfin30s.eirini.cf/) (source: [suhlig/zero-to-cf-in-30-seconds](https://github.com/suhlig/zero-to-cf-in-30-seconds)) is built using `revealing` and published on IBM Cloud using a GitHub action after each `git push`.
+* [Zero to CF in Kube-Cluster in 30 Seconds with Concourse, Helm, Fissile and Eirini](https://suhlig.github.io/zero-to-cf-in-30-seconds) (source: [suhlig/zero-to-cf-in-30-seconds](https://github.com/suhlig/zero-to-cf-in-30-seconds)) is built using `revealing`.
 
 # Development
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-REVEAL_JS_VERSION = ENV.fetch('REVEAL_JS_VERSION', '4.3.1')
+REVEAL_JS_VERSION = ENV.fetch('REVEAL_JS_VERSION', '5.0.2')
 
 desc 'reveal.js is present'
 directory REVEAL_JS_TARGET_DIR => TARGET_DIR do |target|
